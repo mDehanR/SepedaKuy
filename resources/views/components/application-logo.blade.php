@@ -1,0 +1,1 @@
+<x-sepedakuy-logo {{ $attributes }} />
