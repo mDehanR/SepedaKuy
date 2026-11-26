@@ -4,6 +4,7 @@
         ? [
             ['label' => 'Dashboard', 'route' => 'admin.dashboard', 'active' => 'admin.dashboard'],
             ['label' => 'Data Sepeda', 'route' => 'admin.bikes.index', 'active' => 'admin.bikes.*'],
+            ['label' => 'GPS Sepeda', 'route' => 'admin.bikes.gps', 'active' => 'admin.bikes.gps'],
             ['label' => 'Peminjaman', 'route' => 'admin.rentals.index', 'active' => 'admin.rentals.*'],
             ['label' => 'Profil', 'route' => 'profile.edit', 'active' => 'profile.*'],
         ]
@@ -36,7 +37,14 @@
                    'sidebar-link-active' => request()->routeIs($item['active']),
                ])
                @click="sidebarOpen = false">
-                <span class="sidebar-link-mark" aria-hidden="true"></span>
+                @if ($item['route'] === 'admin.bikes.gps')
+                    <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 5.25-7.5 11.25-7.5 11.25S4.5 15.75 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                        <circle cx="12" cy="10.5" r="2.25" />
+                    </svg>
+                @else
+                    <span class="sidebar-link-mark" aria-hidden="true"></span>
+                @endif
                 <span class="sidebar-link-label" x-show="!sidebarCollapsed">{{ $item['label'] }}</span>
             </a>
         @endforeach

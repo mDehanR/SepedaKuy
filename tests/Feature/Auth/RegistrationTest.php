@@ -23,7 +23,7 @@ class RegistrationTest extends TestCase
             'name' => 'Test User',
             'email' => 'test@example.com',
             'phone' => '081234567890',
-            'birth_place' => 'Bandung',
+            'address' => 'Jl. Merdeka No. 10, Bandung',
             'birth_date' => '2000-05-20',
             'password' => 'password',
             'password_confirmation' => 'password',
@@ -34,14 +34,14 @@ class RegistrationTest extends TestCase
         $this->assertDatabaseHas('users', [
             'email' => 'test@example.com',
             'phone' => '081234567890',
-            'birth_place' => 'Bandung',
+            'address' => 'Jl. Merdeka No. 10, Bandung',
         ]);
 
         $user = User::where('email', 'test@example.com')->firstOrFail();
         $this->assertSame('2000-05-20', $user->birth_date->toDateString());
     }
 
-    public function test_registration_requires_phone_and_birth_information(): void
+    public function test_registration_requires_phone_address_and_birth_information(): void
     {
         $response = $this->post('/register', [
             'name' => 'Test User',
@@ -52,7 +52,7 @@ class RegistrationTest extends TestCase
 
         $response->assertSessionHasErrors([
             'phone',
-            'birth_place',
+            'address',
             'birth_date',
         ]);
         $this->assertGuest();
@@ -64,7 +64,7 @@ class RegistrationTest extends TestCase
             'name' => 'Test User',
             'email' => 'test@example.com',
             'phone' => '081234567890',
-            'birth_place' => 'Bandung',
+            'address' => 'Jl. Merdeka No. 10, Bandung',
             'birth_date' => '2999-01-01',
             'password' => 'password',
             'password_confirmation' => 'password',

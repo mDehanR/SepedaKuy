@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminBikeController;
 use App\Http\Controllers\Admin\AdminRentalController;
+use App\Http\Controllers\Admin\BikeGpsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserRentalController;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,9 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/dashboard', [AdminRentalController::class, 'dashboard'])->name('dashboard');
 
         Route::resource('bikes', AdminBikeController::class)->except(['show']);
+        Route::get('/bikes/gps', [BikeGpsController::class, 'index'])->name('bikes.gps');
+        Route::get('/bikes/gps/positions', [BikeGpsController::class, 'positions'])->name('bikes.gps.positions');
+        Route::post('/bikes/{bike}/gps', [BikeGpsController::class, 'updateLocation'])->name('bikes.gps.update');
 
         Route::get('/rentals', [AdminRentalController::class, 'index'])->name('rentals.index');
         Route::post('/rentals/{rental}/approve', [AdminRentalController::class, 'approve'])->name('rentals.approve');

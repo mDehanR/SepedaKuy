@@ -2,6 +2,15 @@
     <x-slot name="header">
         <div class="flex flex-wrap items-center justify-between gap-2">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <a href="{{ route('admin.bikes.gps') }}"
+               class="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 5.25-7.5 11.25-7.5 11.25S4.5 15.75 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    <circle cx="12" cy="10.5" r="2.25" />
+                </svg>
+                GPS Sepeda
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">

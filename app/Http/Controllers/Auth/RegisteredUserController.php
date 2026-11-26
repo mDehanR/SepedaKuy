@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'string', 'regex:/^[0-9+\-\s]+$/', 'min:10', 'max:20'],
-            'birth_place' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:100'],
             'birth_date' => ['required', 'date', 'before_or_equal:today'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
-            'birth_place' => $validated['birth_place'],
+            'address' => $validated['address'],
             'birth_date' => $validated['birth_date'],
             'password' => Hash::make($validated['password']),
         ]);

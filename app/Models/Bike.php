@@ -17,10 +17,22 @@ class Bike extends Model
         'status',
         'image',
         'description',
+        'latitude',
+        'longitude',
+        'gps_updated_at',
     ];
 
     public function rentals(): HasMany
     {
         return $this->hasMany(Rental::class);
     }
+
+    protected function casts(): array
+    {
+        return [
+            'latitude' => 'float',
+            'longitude' => 'float',
+            'gps_updated_at' => 'datetime',
+        ];
+    }   
 }

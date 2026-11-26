@@ -23,11 +23,11 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
-        <!-- Birth Place -->
+        <!-- Address -->
         <div class="mt-4">
-            <x-input-label for="birth_place" :value="__('Tempat Lahir')" />
-            <x-text-input id="birth_place" class="block mt-1 w-full" type="text" name="birth_place" :value="old('birth_place')" required autocomplete="address-level2" />
-            <x-input-error :messages="$errors->get('birth_place')" class="mt-2" />
+            <x-input-label for="address" :value="__('Alamat Rumah')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="street-address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
         <!-- Birth Date -->
